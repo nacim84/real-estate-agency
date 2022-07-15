@@ -1,0 +1,164 @@
+***************
+* React Notes *
+***************
+
+
+
+	- React/React-Dom (18.2.0)
+	
+		- npx create-react-app react-app
+		
+		- Tailwind-css (v3.1.4)
+		
+			- npm install -D tailwindcss postcss autoprefixer
+			- npx tailwindcss init -p
+			
+				> in tailwind.config.js
+				
+						module.exports = {
+						  content: [
+							"./src/**/*.{js,jsx,ts,tsx}",
+						  ],
+						  theme: {
+							extend: {},
+						  },
+						  plugins: [],
+						}
+						
+						
+				> in index.css
+				
+						@tailwind base;
+						@tailwind components;
+						@tailwind utilities;
+		
+		
+		- Router-Dom (v6.3.0)
+			
+			- npm install react-router-dom
+			
+			- in index.js
+			
+						 import { Routes, Route, BrowserRouter } from "react-router-dom";
+						 
+			
+						 <React.StrictMode>
+							<BrowserRouter>
+							  <Routes>
+								<Route path="/" element={<App />}>
+								  <Route path="/example1" element={<Example1 />} />
+								  <Route path="/example2" element={<Example1 />} />
+								  <Route
+									path="*"
+									element={
+									  <main style={{ padding: "1rem" }}>
+										<p>There's nothing here!</p>
+									  </main>
+									}
+								  />
+								</Route>
+							  </Routes>
+							</BrowserRouter>
+						  </React.StrictMode>
+						  
+						  
+			- In Layout.js (Mise en Page golobale)
+			
+			
+						 <div>
+						  <TopBar />
+						  <main className="mt-10 w-screen max-h-screen">
+						  
+							<Outlet />			<-------- toute ton App sera rendu ici, 	
+							
+						  </main>
+						  <Footer />
+						</div>
+						
+	
+	
+	
+ - Git
+
+	- Bitbucket
+	
+		> Token for "real-estate-agency" : 0Y7zfvc2uKUDo4U9QCdH9284
+	  
+		- Label: learn-react
+		- App Password : FRh3NRqnjvUg845AxkLy
+	
+	- GitHub
+	
+		- echo "# test" >> README.md
+		
+		- git init
+		
+		- git add README.md
+		
+		- git commit -m "first commit"
+		
+		- git branch -M main
+		
+		- git remote add origin https://github.com/nacim84/test.git
+		
+		- git push -u origin main
+
+ - Json-Server
+ 
+	- Install : 	npm install -g json-server
+	
+	- Start :		json-server --watch data/db.json
+ 
+	- GET All : 	http://localhost:4000/announces
+	
+	
+	- GET By ID :	http://localhost:4000/announces/5
+	
+	- POST :		http://localhost:4000/announces
+
+
+- Astuces :
+
+
+	- Error key : toujours là où il y a la liste/tableau (key={component.id})
+	- 
+	
+- Extention VsCode
+
+	- Emmet : https://dev.to/raaynaldo/speed-up-code-your-html-using-emmet-in-vscode-nesting-operators-201o
+
+- Infos:
+
+	- Où est le lien entre index.html et index.js dans une application Create-React-App ?
+
+		Sous le capot, Create React App utilise Webpack avec html-webpack-plugin" rel="nofollow noopener noreferrer" target="_blank">html-webpack-plugin .
+		Notre configuration spécifie que Webpack utilise src/index.js comme un "point d'entrée" . C'est donc le premier module qu'il lit, et il enchaîne avec les 
+		autres modules pour les compiler en un seul paquet.
+
+		Lorsque webpack compile les actifs, il produit un seul (ou plusieurs si vous utilisez le fractionnement du code) bundle. Il met leurs chemins finaux 
+		à la disposition de tous les plugins. Nous utilisons un 
+		tel plugin pour injecter des scripts dans le HTML.
+
+		Nous avons permis html-webpack-plugin pour générer le fichier HTML. Dans notre configuration, nous spécifié qu'il faut lire public/index.html comme modèle. 
+		Nous avons également défini inject option a true . Avec cette option, html-webpack-plugin ajoute un <script> avec le chemin fourni par Webpack directement dans 
+		la page HTML finale. Cette page finale est celle que vous obtenez dans build/index.html après l'exécution npm run build et celui qui est servi par / lorsque vous exécutez npm start .
+
+		J'espère que cela vous aidera ! La beauté de Create React App est que vous n'avez pas besoin d'y penser.
+
+
+- Webliographie
+---------------
+
+- https://angrytools.com/
+
+- https://stackoverflow.com/questions/41738421/how-react-js-index-js-file-contacting-index-html-for-id-references
+
+- Source: https://prograide.com/pregunta/55582/ou-est-le-lien-entre-indexhtml-et-indexjs-dans-une-application-create-react-app
+
+- https://flowbite.com/docs/getting-started/react/
+
+- https://fr.freepik.com/photos-gratuite/belle-vue-lac-bleu-capture-interieur-villa_9931895.htm#query=maison&position=14&from_view=search
+
+- https://v5.reactrouter.com/web/guides/quick-start
+
+- https://reactrouter.com/docs/en/v6/getting-started/tutorial
