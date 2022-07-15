@@ -1,38 +1,15 @@
-import { React, useEffect, useState } from "react";
+import { React } from "react";
 import AllAnnounces from "../components/announces/AllAnnounces";
+import useFetch from "../components/hooks/useFetch";
 
 export default function Home() {
-  const [allAnnounces, setAllAnnounces] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const allAnnouncesUri = "http://localhost:4000/announces";
 
-  const allAnnouncesUri = "http://localhost:4000/announcesss";
-
-  useEffect(() => {
-    setTimeout(() => {
-      fetch(allAnnouncesUri)
-        .then((res) => {
-          console.log(res);
-          if (!res.ok) {
-            throw Error(
-              "Une erreur est survenue lors du chargement de la page !"
-            );
-          }
-          return res.json();
-        })
-        .then((data) => {
-          setAllAnnounces(data);
-          setIsLoading(false);
-          setError(null);
-          console.log(allAnnounces);
-        })
-        .catch((err) => {
-          setError(err);
-          setIsLoading(false);
-          console.log(err.message);
-        });
-    }, 2000);
-  }, []);
+  const {
+    dataInput: allAnnounces,
+    isLoading,
+    error,
+  } = useFetch(allAnnouncesUri);
 
   return (
     <section>
