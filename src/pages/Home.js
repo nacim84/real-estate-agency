@@ -1,93 +1,52 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import AllAnnounces from "../components/announces/AllAnnounces";
 
 export default function Home() {
-  const DUMMY_DATA = [
-    {
-      id: 1,
-      title: "Announce name",
-      image: "/images/announce-1.jpg",
-      address: "Address of announce",
-      description: "Description of announce",
-      price: 100000,
-    },
-    {
-      id: 2,
-      title: "Announce name",
-      image: "/images/announce-2.jpg",
-      address: "Address of announce",
-      description: "Description of announce",
-      price: 100000,
-    },
-    {
-      id: 3,
-      title: "Announce name",
-      image: "/images/announce-3.jpg",
-      address: "Address of announce",
-      description: "Description of announce",
-      price: 100000,
-    },
-    {
-      id: 4,
-      title: "Announce name",
-      image: "/images/announce-4.jpg",
-      address: "Address of announce",
-      description: "Description of announce",
-      price: 100000,
-    },
-    {
-      id: 5,
-      title: "Announce name",
-      image: "/images/announce-5.jpg",
-      address: "Address of announce",
-      description: "Description of announce",
-      price: 100000,
-    },
-    {
-      id: 6,
-      title: "Announce name",
-      image: "/images/announce-6.jpg",
-      address: "Address of announce",
-      description: "Description of announce",
-      price: 100000,
-    },
-    {
-      id: 7,
-      title: "Announce name",
-      image: "/images/announce-7.jpg",
-      address: "Address of announce",
-      description: "Description of announce",
-      price: 100000,
-    },
-    {
-      id: 8,
-      title: "Announce name",
-      image: "/images/announce-8.jpg",
-      address: "Address of announce",
-      description: "Description of announce",
-      price: 100000,
-    },
-    {
-      id: 9,
-      title: "Announce name",
-      image: "/images/announce-9.jpg",
-      address: "Address of announce",
-      description: "Description of announce",
-      price: 100000,
-    },
-    {
-      id: 10,
-      title: "Announce name",
-      image: "/images/announce-10.jpg",
-      address: "Address of announce",
-      description: "Description of announce",
-      price: 100000,
-    },
-  ];
+  const [allAnnounces, setAllAnnounces] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const allAnnouncesUri = "http://localhost:4000/announcesss";
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetch(allAnnouncesUri)
+        .then((res) => {
+          console.log(res);
+          if (!res.ok) {
+            throw Error(
+              "Une erreur est survenue lors du chargement de la page !"
+            );
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setAllAnnounces(data);
+          setIsLoading(false);
+          setError(null);
+          console.log(allAnnounces);
+        })
+        .catch((err) => {
+          setError(err);
+          setIsLoading(false);
+          console.log(err.message);
+        });
+    }, 2000);
+  }, []);
+
   return (
     <section>
       <h1 className="text-2xl font-bold ml-16">All Announces</h1>
-      <AllAnnounces annoucesList={DUMMY_DATA} />
+
+      {error && (
+        <div className="text-center text-red-500 font-sans">
+          {error.message}
+        </div>
+      )}
+      {isLoading && (
+        <div className="text-center font-sans">Veuillez patienter ...</div>
+      )}
+      {allAnnounces && <AllAnnounces annoucesList={allAnnounces} />}
     </section>
   );
 }

@@ -6,19 +6,20 @@ export default function Signup() {
     email: "",
     password: "",
     confirmPassword: "",
+    newsletters: false,
   });
 
   const onChangeHandler = (event) => {
     event.preventDefault();
     const target = event.target;
     const value = target.value;
-    const checkbox = target.checkbox;
+    const checked = target.checked;
     const type = target.type;
     const name = target.name;
 
     const updatedFormData = {
       ...signUpFormData,
-      [name]: type !== "checkbox" ? value : checkbox,
+      [name]: type !== "checkbox" ? value : checked,
     };
 
     console.log(updatedFormData);
@@ -79,6 +80,17 @@ export default function Signup() {
               name="confirmPassword"
               type="password"
               placeholder="Your confirm Password"
+              onChange={onChangeHandler}
+            />
+          </div>
+          <div className="flex flex-row space-x-2 items-center">
+            <label htmlFor="confirmPassword">Confirm NewsLetters</label>
+            <input
+              className="px-2 py-1 rounded-md "
+              id="newsletters"
+              name="newsletters"
+              type="checkbox"
+              placeholder="Confirm NewsLetters ?"
               onChange={onChangeHandler}
             />
           </div>
