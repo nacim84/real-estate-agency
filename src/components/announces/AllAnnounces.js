@@ -4,7 +4,7 @@ import Announce from "./Announce";
 export default function AllAnnounces(props) {
   return (
     <div className="flex flex-col space-y-5">
-      <div className="text-2xl font-bold mt-10">All Announces</div>
+      <div className="text-2xl font-bold">All Announces</div>
       <ul className="flex flex-col space-y-5 items-center">
         {props.annoucesList.map((announce) => {
           return (

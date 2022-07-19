@@ -12,7 +12,7 @@ export default function Home() {
   } = useFetch(allAnnouncesUri);
 
   return (
-    <section className="my-10">
+    <section className="my-10 py-10">
       {error && (
         <div className="text-center text-red-500 font-sans">
           {error.message}

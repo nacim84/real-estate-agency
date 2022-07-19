@@ -6,7 +6,7 @@ import TopBar from "./TopBar";
 
 export default function Layout() {
   return (
-    <div>
+    <div className="w-full h-full">
       <TopBar />
       <HeroArea />
       <Footer />

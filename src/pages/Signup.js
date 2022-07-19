@@ -30,7 +30,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex flex-col w-screen items-center">
+    <div className="flex flex-col w-full h-full items-center">
       <div className="mt-10 bg-slate-400 w-full max-w-xs sm:max-w-md rounded-lg px-4 py-2 shadow-lg">
         <h1 className="text-xl font-bold text-center">Sign-Up Form</h1>
         <form
