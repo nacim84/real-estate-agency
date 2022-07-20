@@ -1,0 +1,33 @@
+
+
+1 - Install Tailwind via npm  
+
+  # Using npm
+  npm install -D tailwindcss
+
+  npx tailwindcss init
+
+2 - Add Tailwind to your CSS (to build, tailwindcss.css ==> index.css)
+
+  @import "tailwindcss/base";
+
+  @import "tailwindcss/components";
+
+  @import "tailwindcss/utilities";
+
+
+3 - Create your Tailwind config file
+
+  npx tailwindcss init
+
+
+4 - Process your CSS with Tailwind (Using Tailwind CLI)
+
+  npx tailwindcss build /assets/css/tailwindcss.css -o /assets/css/index.css
+
+
+  - in package.json as script
+
+   "scripts": {
+    "build": "npx tailwindcss build ./assets/css/tailwindcss.css -o ./assets/css/index.css --watch"
+  },
