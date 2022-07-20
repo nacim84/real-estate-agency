@@ -7,7 +7,19 @@
 
   npx tailwindcss init
 
-2 - Add Tailwind to your CSS (to build, tailwindcss.css ==> index.css)
+
+
+2 - Configure your template paths
+
+      module.exports = {
+      content: ["./src/**/*.{html,js}"],
+      theme: {
+        extend: {},
+      },
+      plugins: [],
+    }
+
+3 - Add Tailwind to your CSS (to build, tailwindcss.css ==> index.css)
 
   @import "tailwindcss/base";
 
@@ -15,19 +27,13 @@
 
   @import "tailwindcss/utilities";
 
-
-3 - Create your Tailwind config file
-
-  npx tailwindcss init
-
-
 4 - Process your CSS with Tailwind (Using Tailwind CLI)
 
-  npx tailwindcss build /assets/css/tailwindcss.css -o /assets/css/index.css
+  npx tailwindcss -i ./src/assets/css/tailwindcss.css -o ./dist/index.css --watch
 
 
   - in package.json as script
 
    "scripts": {
-    "build": "npx tailwindcss build ./assets/css/tailwindcss.css -o ./assets/css/index.css --watch"
+    "build": "npx tailwindcss -i ./src/assets/css/tailwindcss.css -o ./dist/index.css --watch"
   },

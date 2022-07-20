@@ -4,7 +4,7 @@
   "description": "ui/ux design",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i build ./src/assets/css/tailwindcss.css -o ./src/assets/css/index.css --watch"
+    "build": "npx tailwindcss -i ./src/assets/css/tailwindcss.css -o ./dist/index.css --watch"
   },
   "author": "Nacim R",
   "license": "ISC",
